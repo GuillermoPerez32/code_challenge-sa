@@ -1,26 +1,74 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
+import { Student } from './entities/student.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class StudentsService {
-  create(createStudentDto: CreateStudentDto) {
-    return 'This action adds a new student';
+  private readonly logger = new Logger('StudentsService');
+
+  constructor(
+    @InjectRepository(Student)
+    private readonly studentRepository: Repository<Student>,
+  ) {}
+
+  async create(createStudentDto: CreateStudentDto) {
+    try {
+      const student = this.studentRepository.create({
+        ...createStudentDto,
+      });
+      await this.studentRepository.save(student);
+      return student;
+    } catch (error) {
+      this.logger.error(error);
+    }
   }
 
-  findAll() {
-    return `This action returns all students`;
+  async findAll(paginationDto: PaginationDto) {
+    const { limit, offset } = paginationDto;
+    const sudents = await this.studentRepository.find({
+      take: limit,
+      skip: offset,
+      order: {
+        id: 'ASC',
+      },
+    });
+    return sudents;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} student`;
+  async findOne(id: number) {
+    const student = await this.studentRepository.findOneBy({ id });
+    if (!student)
+      throw new NotFoundException(`Student with id ${id} doesn't exist`);
+    return student;
   }
 
-  update(id: number, updateStudentDto: UpdateStudentDto) {
-    return `This action updates a #${id} student`;
+  async update(id: number, updateStudentDto: UpdateStudentDto) {
+    const student = await this.studentRepository.preload({
+      id,
+      ...updateStudentDto,
+    });
+
+    if (!student)
+      throw new BadRequestException(`Student with id ${id} doesn't exist`);
+
+    const newStudent = this.studentRepository.save(student);
+
+    return newStudent;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} student`;
+  async remove(id: number) {
+    const student = await this.studentRepository.findOneBy({ id });
+    if (!student)
+      throw new BadRequestException(`Student with id ${id} doesn't exist`);
+    return this.studentRepository.remove(student);
   }
 }

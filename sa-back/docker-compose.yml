@@ -1,13 +1,16 @@
-version: '3.2'
-
 services:
   db:
-    image: postgres:14.3
+    image: postgres:14.3-alpine
     container_name: sa-pgdb
+    restart: always
     ports:
       - "${DB_PORT}:5432"
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
     volumes:
-      - ./db:/var/lib/postgresql
+      - psql-db-data:/var/lib/postgresql/data
+
+volumes:
+  psql-db-data:
