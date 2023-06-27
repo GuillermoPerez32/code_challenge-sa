@@ -5,7 +5,23 @@
 }
 
 .table__container {
-    background-color: white;
-    border-radius: 1px;
+    background-color: map-get($map: $colors, $key: table-bg);
     width: 90%;
+    border-radius: 8px;
+    
+}
+
+.table__header {
+    background-color: map-get($map: $colors, $key: header-bg);
+    color: map-get($map: $colors, $key: header-text);
+    padding: 1rem 2rem;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table__header--actions--container {
+    display: flex;
+    gap: 1rem;
 }
