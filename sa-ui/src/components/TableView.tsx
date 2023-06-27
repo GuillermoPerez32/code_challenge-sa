@@ -8,8 +8,10 @@ const TableView = () => {
     <div className="table__wrapper">
       <div className="table__container">
         <Header />
-        <Table />
-        <Pagination />
+        <div className="table__content">
+          <Table />
+          <Pagination />
+        </div>
       </div>
     </div>
   );

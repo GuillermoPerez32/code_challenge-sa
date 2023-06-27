@@ -25,3 +25,51 @@
     display: flex;
     gap: 1rem;
 }
+
+.table__content {
+    padding: 1.6rem;
+}
+
+.table__table-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3em;
+}
+
+.th {
+    @include font-size-rem(1.2);
+    color: map-get($map: $colors, $key: table-head);
+    font-weight: bold;
+}
+
+.table__table-head {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    & .col {
+        &-check {
+            width: 5%;
+        }
+        &-name {
+            width: 30%;
+        }
+        &-email {
+            width: 20%;
+        }
+        &-address {
+            width: 20%;
+        }
+        &-phone {
+            width: 15%;
+        }
+        &-actions {
+            width: 5%;
+        }
+    }
+
+    & .checkbox {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}

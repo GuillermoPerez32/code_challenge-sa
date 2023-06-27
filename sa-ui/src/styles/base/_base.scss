@@ -22,7 +22,3 @@ font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 h1 {
   @include font-size-rem(2);
 }
-
-th {
-  @include font-size-rem(1.2);
-}
