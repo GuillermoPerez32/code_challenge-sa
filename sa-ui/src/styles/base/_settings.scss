@@ -1,0 +1,13 @@
+$colors: (
+  header-bg: #435d7d,
+  primary-font: #a5adcd,
+  danger: #d9534f,
+  accept: #5cb85c,
+  table-page: #03a9f4,
+  table-head: #7b89a1,
+  bg: #f5f5f5,
+);
+
+@mixin font-size-rem($size) {
+    font-size: $size * 1rem;
+}

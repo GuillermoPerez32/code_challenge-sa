@@ -1,8 +1,7 @@
-import React from "react";
-import logo from "./logo.svg";
+import TableView from "./components/TableView";
 
-function App() {
-  return <h1>Hola</h1>;
-}
+const App = () => {
+  return <TableView />;
+};
 
 export default App;
