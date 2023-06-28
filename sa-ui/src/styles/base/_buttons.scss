@@ -31,3 +31,28 @@
         cursor: pointer;        
     }
 }
+
+.action {
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    &--edit {
+        color: map-get($map: $colors, $key: edit-action);
+        &:hover{    
+            color: darken($color: map-get($map: $colors, $key: edit-action), $amount: 5%);
+        }
+        &:active{    
+            color: darken($color: map-get($map: $colors, $key: edit-action), $amount: 10%);
+        }
+    }
+
+    &--delete {
+        color: map-get($map: $colors, $key: delete-action);
+        &:hover{    
+            color: darken($color: map-get($map: $colors, $key: delete-action), $amount: 5%);
+        }
+        &:active{    
+            color: darken($color: map-get($map: $colors, $key: delete-action), $amount: 10%);
+        }
+    }
+}

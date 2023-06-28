@@ -1,7 +1,7 @@
 $colors: (
   header-bg: #435d7d,
   header-text: #fdfff9,
-  primary-font: #a5adcd,
+  primary-font: #5d6275,
   danger: #d9534f,
   accept: #5cb85c,
   table-page: #03a9f4,
@@ -9,6 +9,8 @@ $colors: (
   table-bg: white,
   bg: #f5f5f5,
   text-primary: white,
+  edit-action: #fec928,
+  delete-action: #f55a4e,
 );
 
 @mixin font-size-rem($size) {

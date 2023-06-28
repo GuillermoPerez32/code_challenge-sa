@@ -8,7 +8,6 @@
     background-color: map-get($map: $colors, $key: table-bg);
     width: 90%;
     border-radius: 8px;
-    
 }
 
 .table__header {
@@ -27,13 +26,16 @@
 }
 
 .table__content {
-    padding: 1.6rem;
+    padding: 4em;
 }
 
 .table__table-container {
     display: flex;
     flex-direction: column;
     padding-bottom: 3em;
+    height: 400px;
+    overflow-y: auto;
+    color: map-get($map: $colors, $key: primary-font)
 }
 
 .th {
@@ -45,31 +47,48 @@
 .table__table-head {
     display: flex;
     align-items: center;
-    justify-content: start;
+    padding-bottom: 1.2em;
+}
 
-    & .col {
-        &-check {
-            width: 5%;
-        }
-        &-name {
-            width: 30%;
-        }
-        &-email {
-            width: 20%;
-        }
-        &-address {
-            width: 20%;
-        }
-        &-phone {
-            width: 15%;
-        }
-        &-actions {
-            width: 5%;
-        }
-    }
+.checkbox {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+}
 
-    & .checkbox {
-        width: 1.2rem;
-        height: 1.2rem;
+.cell {
+    padding: 0 1em;
+    &--check {
+        width: 10%;
     }
+    &--first-name {
+        width: 20%;
+    }
+    &--email {
+        width: 20%;
+    }
+    &--last-name {
+        width: 20%;
+    }
+    &--age {
+        width: 8%;
+    }
+    &--grade {
+        width: 10%;
+    }
+    &--actions {
+        width: 12%;
+    }
+}
+
+.table__row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1.2em 0;
+}
+
+.action--buttons {
+    display: flex;
+    gap: 1em;
 }
