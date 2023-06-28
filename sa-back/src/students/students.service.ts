@@ -41,7 +41,11 @@ export class StudentsService {
         id: 'ASC',
       },
     });
-    return sudents;
+    const count = await this.studentRepository.count();
+    return {
+      count: count,
+      result: [...sudents],
+    };
   }
 
   async findOne(id: number) {
