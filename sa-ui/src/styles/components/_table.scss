@@ -28,15 +28,14 @@
 
 .table__content {
     padding: 4em;
+    color: map-get($map: $colors, $key: primary-font)
 }
 
 .table__table-container {
     display: flex;
     flex-direction: column;
     margin-bottom: 3em;
-    height: 400px;
     overflow-y: auto;
-    color: map-get($map: $colors, $key: primary-font)
 }
 
 .th {

@@ -2,11 +2,20 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { AppContext } from "../features/AppContext";
+import { deleteStudent, getAllStudents } from "../services/students";
 
 const Table = () => {
-  const { studentResponse } = useContext(AppContext);
+  const { studentResponse, offset, setStudentResponse } =
+    useContext(AppContext);
 
   const { result } = studentResponse;
+
+  const handleDelete = async (id: number) => {
+    if (window.confirm("Do you really want to delete it?")) {
+      await deleteStudent(id);
+      setStudentResponse(await getAllStudents(offset));
+    }
+  };
 
   return (
     <div className="table__table-container">
@@ -52,6 +61,7 @@ const Table = () => {
                 <FontAwesomeIcon
                   icon={faTrash}
                   className="action action--delete"
+                  onClick={() => handleDelete(e.id)}
                 />
               </div>
             </div>

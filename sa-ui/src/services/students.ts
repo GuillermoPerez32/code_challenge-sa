@@ -33,7 +33,8 @@ export const updateStudent = async (id:number, updateStudent: CreateStudentProps
     }
 }
  
-export const deleteStudent = async (id:number) => { 
+export const deleteStudent = async (id: number) => { 
+    
     try {
         await axios.delete<StudentResponse>(`http://127.0.0.1:3001/api/students/${id}`)
         return true;

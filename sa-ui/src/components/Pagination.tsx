@@ -3,14 +3,14 @@ import { AppContext } from "../features/AppContext";
 
 const Pagination = () => {
   const { offset, studentResponse, setOffset } = useContext(AppContext);
-  const { count } = studentResponse;
+  const { count = 0, result = [] } = studentResponse;
 
-  const pages = count % 5 === 0 ? count / 5 : Math.floor(count / 5) + 1;
+  const pages = Math.ceil(count / 5);
 
   return (
     <div className="table__pagination--container">
       <div className="table__pagination--count">
-        Showing 5 out of {count} entries
+        Showing {result ? result.length : 0} out of {count} entries
       </div>
       <div className="table__pagination--buttons">
         <span>Previous</span>

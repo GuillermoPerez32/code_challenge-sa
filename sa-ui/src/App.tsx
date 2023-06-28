@@ -14,8 +14,6 @@ const App = () => {
   useEffect(() => {
     getAllStudents(offset)
       .then((data: StudentResponse) => {
-        console.log(data.result);
-
         setStudentResponse(data);
       })
       .catch((error) => console.error(error));
