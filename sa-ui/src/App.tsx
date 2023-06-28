@@ -3,6 +3,7 @@ import TableView from "./components/TableView";
 import { AppContext } from "./features/AppContext";
 import { getAllStudents } from "./services/students";
 import { StudentResponse } from "./types/student";
+import { useModal } from "./hooks/useModal";
 
 const App = () => {
   const [studentResponse, setStudentResponse] = useState<StudentResponse>({
@@ -10,6 +11,7 @@ const App = () => {
     result: [],
   });
   const [offset, setOffset] = useState(0);
+  const modal = useModal();
 
   useEffect(() => {
     getAllStudents(offset)
@@ -26,9 +28,10 @@ const App = () => {
         setStudentResponse,
         offset,
         setOffset,
+        modal,
       }}
     >
-      <TableView />;
+      <TableView />
     </AppContext.Provider>
   );
 };
