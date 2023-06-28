@@ -36,10 +36,7 @@ export class StudentsService {
     const { limit, offset } = paginationDto;
     const sudents = await this.studentRepository.find({
       take: limit,
-      skip: offset,
-      order: {
-        id: 'ASC',
-      },
+      skip: offset * limit,
     });
     const count = await this.studentRepository.count();
     return {
