@@ -27,3 +27,24 @@
     }
   }
   
+  .modal__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em 0;
+
+    & > .modal__field {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+    }
+
+    input {
+        padding: .4rem;
+        font-size: 1.2rem;
+        color: white;
+        outline: none;
+        border: none;
+        background-color: map-get($map: $colors, $key: table-head);
+    }
+  }

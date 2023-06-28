@@ -7,7 +7,9 @@ export const createStudent = async (createStudent: CreateStudentProps) => {
         await axios.post<StudentResponse>('http://127.0.0.1:3001/api/students/', createStudent)
         return true;
     }
-    catch {
+    catch (e) {
+        console.log(e);
+        
         return false;
     }
 }

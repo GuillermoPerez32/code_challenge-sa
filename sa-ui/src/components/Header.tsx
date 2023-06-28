@@ -2,15 +2,19 @@ import { faAdd, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { AppContext } from "../features/AppContext";
+import ModalAdd from "./modals/ModalAdd";
+import ModalEdit from "./modals/ModalEdit";
 
 const Header = () => {
   const { modal } = useContext(AppContext);
   const { openModal } = modal;
 
   const handleAdd = () => {
-    console.log(modal);
+    openModal(<ModalAdd />);
+  };
 
-    openModal(<div>asdfadfa</div>);
+  const handleEdit = () => {
+    openModal(<ModalEdit />);
   };
 
   return (
@@ -20,7 +24,7 @@ const Header = () => {
       </h1>
       <div className="table__header--actions--container">
         <div className="btn btn-danger t-bold">
-          <FontAwesomeIcon icon={faTrash} />
+          <FontAwesomeIcon icon={faTrash} onClick={() => handleEdit()} />
           Delete
         </div>
         <div className="btn btn-accept t-bold" onClick={() => handleAdd()}>
