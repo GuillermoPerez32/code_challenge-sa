@@ -33,7 +33,7 @@ export class StudentsService {
   }
 
   async findAll(paginationDto: PaginationDto) {
-    const { limit, offset } = paginationDto;
+    const { limit = 0, offset = 0 } = paginationDto;
     const sudents = await this.studentRepository.find({
       take: limit,
       skip: offset * limit,
