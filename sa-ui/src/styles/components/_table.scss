@@ -32,7 +32,7 @@
 .table__table-container {
     display: flex;
     flex-direction: column;
-    padding-bottom: 3em;
+    margin-bottom: 3em;
     height: 400px;
     overflow-y: auto;
     color: map-get($map: $colors, $key: primary-font)
