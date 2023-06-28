@@ -92,3 +92,14 @@
     display: flex;
     gap: 1em;
 }
+
+.table__pagination--container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table__pagination--buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
