@@ -2,6 +2,7 @@
     padding: 1rem;
     cursor: pointer;
     display: flex;
+    align-items: center;
     gap: .6rem;
     color: map-get($map: $colors, $key: primary-font);
     user-select: none;
