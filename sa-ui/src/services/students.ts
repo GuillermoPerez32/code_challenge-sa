@@ -8,7 +8,6 @@ export const createStudent = async (createStudent: CreateStudentProps) => {
         return true;
     }
     catch (e) {
-        console.log(e);
         
         return false;
     }
@@ -25,12 +24,13 @@ export const getAllStudents = async (offset:number): Promise<StudentResponse>  =
     return students.data;
 }
  
-export const updateStudent = async (id:number, updateStudent: CreateStudentProps) => { 
+export const updateStudent = async (id: number, updateStudent: CreateStudentProps) => { 
+
     try {
         await axios.patch<StudentResponse>(`http://127.0.0.1:3001/api/students/${id}`, updateStudent)
         return true;
     }
-    catch {
+    catch (e) {
         return false;
     }
 }

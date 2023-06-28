@@ -3,10 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { AppContext } from "../features/AppContext";
 import { deleteStudent, getAllStudents } from "../services/students";
+import { ModalEdit } from "./modals/ModalEdit";
 
 const Table = () => {
-  const { studentResponse, offset, setStudentResponse } =
+  const { studentResponse, offset, setStudentResponse, modal } =
     useContext(AppContext);
+  const { openModal } = modal;
 
   const { result } = studentResponse;
 
@@ -15,6 +17,9 @@ const Table = () => {
       await deleteStudent(id);
       setStudentResponse(await getAllStudents(offset));
     }
+  };
+  const handleEdit = (id: number) => {
+    openModal(<ModalEdit studentId={id} />);
   };
 
   return (
@@ -57,6 +62,7 @@ const Table = () => {
                 <FontAwesomeIcon
                   icon={faEdit}
                   className="action action--edit"
+                  onClick={() => handleEdit(e.id)}
                 />
                 <FontAwesomeIcon
                   icon={faTrash}

@@ -46,5 +46,9 @@
         outline: none;
         border: none;
         background-color: map-get($map: $colors, $key: table-head);
+
+        &::placeholder {
+            color: gainsboro;
+        }
     }
   }

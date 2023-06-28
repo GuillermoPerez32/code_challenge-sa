@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { CreateStudentProps } from "../types/student";
 
-const useForm = (initialState: any) => {
-  const [formValues, setFormValues] = useState(initialState);
+const useForm = <T extends CreateStudentProps>(initialValues: T) => {
+  const [formValues, setFormValues] = useState(initialValues);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
+
+    const valueFixed = name === "age" ? parseInt(value) : value;
+
+    setFormValues({ ...formValues, [name]: valueFixed });
   };
 
   return {

@@ -27,6 +27,7 @@ const ModalAdd = () => {
         <input
           type="text"
           name="first_name"
+          placeholder="first name"
           value={formValues.first_name}
           onChange={handleChange}
         />
@@ -36,6 +37,7 @@ const ModalAdd = () => {
         <input
           type="text"
           name="last_name"
+          placeholder="last name"
           value={formValues.last_name}
           onChange={handleChange}
         />
@@ -45,6 +47,7 @@ const ModalAdd = () => {
         <input
           type="email"
           name="email"
+          placeholder="email"
           value={formValues.email}
           onChange={handleChange}
         />
@@ -64,6 +67,7 @@ const ModalAdd = () => {
         <input
           type="text"
           name="grade"
+          placeholder="grade"
           value={formValues.grade}
           onChange={handleChange}
         />
@@ -75,4 +79,4 @@ const ModalAdd = () => {
   );
 };
 
-export default ModalAdd;
+export { ModalAdd };
