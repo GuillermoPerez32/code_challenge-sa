@@ -75,6 +75,15 @@ const ModalEdit = ({ studentId }: Props) => {
           onChange={handleChange}
         />
       </div>
+      <div className="modal__field">
+        <div>Priority</div>
+        <input
+          type="text"
+          name="priority"
+          value={formValues.priority}
+          onChange={handleChange}
+        />
+      </div>
       <div onClick={handleSubmit} className="btn btn-accept">
         Submit
       </div>

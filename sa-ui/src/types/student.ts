@@ -10,6 +10,7 @@ export interface Student {
     email:      string;
     age:        number;
     grade:      string;
+    priority:      number;
 }
 
 export interface CreateStudentProps {
@@ -18,4 +19,5 @@ export interface CreateStudentProps {
     email?:      string;
     age?:        number;
     grade?:      string;
+    priority?:      number;
 }

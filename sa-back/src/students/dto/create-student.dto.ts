@@ -16,4 +16,7 @@ export class CreateStudentDto {
 
   @IsString()
   grade: string;
+
+  @IsNumber()
+  priority: number;
 }

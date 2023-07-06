@@ -10,6 +10,7 @@ const ModalAdd = () => {
     last_name: "",
     age: 5,
     grade: "",
+    priority: 1,
   });
 
   const { offset, setStudentResponse } = useContext(AppContext);
@@ -69,6 +70,16 @@ const ModalAdd = () => {
           name="grade"
           placeholder="grade"
           value={formValues.grade}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="modal__field">
+        <div>Priority</div>
+        <input
+          type="text"
+          name="priority"
+          placeholder="priority"
+          value={formValues.priority}
           onChange={handleChange}
         />
       </div>

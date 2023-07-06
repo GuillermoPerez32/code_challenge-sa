@@ -8,6 +8,7 @@ export const createStudent = async (createStudent: CreateStudentProps) => {
         return true;
     }
     catch (e) {
+        console.error(e);
         
         return false;
     }

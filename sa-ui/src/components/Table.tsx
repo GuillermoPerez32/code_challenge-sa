@@ -1,13 +1,17 @@
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../features/AppContext";
 import { deleteStudent, getAllStudents } from "../services/students";
 import { ModalEdit } from "./modals/ModalEdit";
+import { Student } from "../types/student";
 
 const Table = () => {
   const { studentResponse, offset, setStudentResponse, modal } =
     useContext(AppContext);
+  
+  const [orderedAsc, setOrderedAsc] = useState<boolean>(false);
+  
   const { openModal } = modal;
 
   const { result } = studentResponse;
@@ -20,6 +24,10 @@ const Table = () => {
   };
   const handleEdit = (id: number) => {
     openModal(<ModalEdit studentId={id} />);
+  };
+
+  const handleSort = () => {
+    setOrderedAsc(!orderedAsc);
   };
 
   return (
@@ -38,10 +46,11 @@ const Table = () => {
         <div className="th cell cell--email">Email</div>
         <div className="th cell cell--age">Age</div>
         <div className="th cell cell--grade">Grade</div>
+        <div className="th cell cell--priority" onClick={() => handleSort()}>Priority</div>
         <div className="th cell cell--actions">Actions</div>
       </div>
       {result &&
-        result.map((e: any) => (
+        result.sort( (a:Student,b: Student) => orderedAsc ? a.priority - b.priority : b.priority - a.priority ).map((e: any) => (
           <div key={e.id}>
             <hr />
             <div className="table__row">
@@ -58,6 +67,7 @@ const Table = () => {
               <div className="cell cell--email">{e.email}</div>
               <div className="cell cell--age">{e.age}</div>
               <div className="cell cell--grade">{e.grade}</div>
+              <div className="cell cell--priority">{e.priority}</div>
               <div className="cell cell--actions action--buttons">
                 <FontAwesomeIcon
                   icon={faEdit}

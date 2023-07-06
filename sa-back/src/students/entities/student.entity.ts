@@ -19,4 +19,7 @@ export class Student {
 
   @Column('text')
   grade: string;
+
+  @Column('int')
+  priority: number;
 }

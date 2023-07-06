@@ -7,7 +7,7 @@ const useForm = <T extends CreateStudentProps>(initialValues: T) => {
   const handleChange = (e: any) => {
     const { name, value } = e.target;
 
-    const valueFixed = name === "age" ? parseInt(value) : value;
+    const valueFixed = name === "age" || name === "priority" ? parseInt(value) : value;
 
     setFormValues({ ...formValues, [name]: valueFixed });
   };
